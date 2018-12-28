@@ -12,10 +12,10 @@ Thank you for considering it: [**`CONTRIBUTE.md`**](CONTRIBUTE.md)
 
 ## Pendings
 
-- [] Validate fields (**`IMPORTANT`**)
-- [] Remove user from list button
-- [] Export to JSON
-- [] Test
+- [ ] Validate fields (**`IMPORTANT`**)
+- [ ] Remove user from list button
+- [ ] Export to JSON
+- [ ] Test
 
 ## FAQ
 
