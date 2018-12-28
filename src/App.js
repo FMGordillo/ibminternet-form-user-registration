@@ -63,7 +63,14 @@ class App extends React.Component {
             <Grid item>
               <Typography variant="h6">
                 We won't save any of these files. Don't believe us? See{" "}
-                <a href="#">the repo</a>.
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://github.com/FMGordillo/ibminternet-form-user-registration"
+                >
+                  the repo
+                </a>
+                .
               </Typography>
             </Grid>
             <Grid item>
