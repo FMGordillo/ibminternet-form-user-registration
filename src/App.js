@@ -1,28 +1,47 @@
 import React from "react"
 import saveAs from "file-saver"
 import { Formik, Form, Field } from "formik"
-import Button from "@material-ui/core/Button"
-import Divider from "@material-ui/core/Divider"
+
+import AppBar from "@material-ui/core/AppBar"
 import Grid from "@material-ui/core/Grid"
+import Divider from "@material-ui/core/Divider"
+import Toolbar from "@material-ui/core/Toolbar"
+
+import Button from "@material-ui/core/Button"
 import Input from "@material-ui/core/Input"
+import List from "@material-ui/core/List"
+import ListItem from "@material-ui/core/ListItem"
+import ListItemIcon from "@material-ui/core/ListItemIcon"
+import ListItemText from "@material-ui/core/ListItemText"
 import Typography from "@material-ui/core/Typography"
 
 import SendIcon from "@material-ui/icons/Send"
+import ArrowRightIcon from "@material-ui/icons/ChevronRight"
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      email: "",
-      usersToAdd: []
+      usersToAdd: [
+        {
+          firstname: "facundo",
+          lastname: "gordillo",
+          email: "famargor@ar.ibm.com"
+        }
+      ]
     }
   }
 
-  handleChange = e => {
-    const { value: email } = e.target
-    this.setState({ email })
+  /**
+   * TODO: Remove item from user list
+   */
+  handleRemove = () => {
+    // TODO
   }
 
+  /**
+   * TODO: Is this sync or async?
+   */
   handleParser = async () => {
     const Json2csvParser = require("json2csv").Parser
     const fields = [
@@ -42,154 +61,164 @@ class App extends React.Component {
 
   render() {
     const styles = {
+      container: {
+        padding: 32
+      },
       title: {
-        marginBottom: 32
+        marginBottom: 24,
+        marginTop: 12
       }
     }
 
     return (
-      <Grid container spacing={32} direction="column">
-        <Grid item>
-          <Typography variant="h2" style={styles.title}>
-            1. Fill this
-          </Typography>
-          <Grid
-            container
-            spacing={16}
-            direction="column"
-            alignItems="center"
-            style={{ width: "100vw" }}
-          >
-            <Grid item>
-              <Typography variant="h6">
-                We won't save any of these files. Don't believe us? See{" "}
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://github.com/FMGordillo/ibminternet-form-user-registration"
-                >
-                  the repo
-                </a>
-                .
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Input
-                type="text"
-                placeholder="Your email"
-                onChange={this.handleChange}
-                value={this.state.email}
+      <>
+        <AppBar position="sticky" color="primary">
+          <Toolbar>
+            <Typography variant="h6" color="inherit" style={{ flexGrow: 1 }}>
+              Register visitors
+            </Typography>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/FMGordillo/ibminternet-form-user-registration"
+            >
+              <img
+                src="/img/GitHub-Mark/GitHub-Mark-32px.png"
+                alt="Github"
+                style={{ width: "2em" }}
               />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Divider />
-        <Grid item>
-          <Typography variant="h2" style={styles.title}>
-            2. Fill these
-          </Typography>
-          <Formik
-            initialValues={{
-              firstname: "",
-              lastname: "",
-              email: "",
-              company: "IBM",
-              personBeingVisited: this.state.email
-            }}
-            onSubmit={(values, { setSubmitting }) => {
-              console.log("submitted", values)
-              this.setState(({ usersToAdd }) => ({
-                usersToAdd: usersToAdd.concat(values)
-              }))
-              setSubmitting(false)
-            }}
-          >
-            {({ handleChange, isSubmitting, errors }) => (
-              <Form>
-                <Grid
-                  container
-                  spacing={16}
-                  justify="center"
-                  style={{ width: "100vw" }}
-                >
-                  <Grid item>
-                    <Grid container spacing={16} justify="center">
-                      <Grid item>
-                        <Field
-                          type="text"
-                          name="firstname"
-                          placeholder="First Name"
-                          component={ControlledInput}
-                        />
-                      </Grid>
-                      <Grid item>
-                        <Field
-                          type="text"
-                          name="lastname"
-                          placeholder="Last Name"
-                          component={ControlledInput}
-                        />
-                      </Grid>
-                      <Grid item>
-                        <Field
-                          type="email"
-                          name="email"
-                          placeholder="Email"
-                          component={ControlledInput}
-                        />
-                      </Grid>
-                      <Grid item>
-                        <Field
-                          type="text"
-                          name="company"
-                          placeholder="Company"
-                          component={ControlledInput}
-                        />
-                      </Grid>
-                      <Grid item>
-                        <Field
-                          type="text"
-                          name="personBeingVisited"
-                          placeholder="Person being visited"
-                          component={ControlledInput}
-                          value={this.state.email}
-                        />
+            </a>
+          </Toolbar>
+        </AppBar>
+
+        <Grid
+          container
+          spacing={32}
+          direction="column"
+          style={styles.container}
+        >
+          <Grid item>
+            <Typography variant="h3" style={styles.title}>
+              1. Fill these
+            </Typography>
+            <Formik
+              initialValues={{
+                firstname: "",
+                lastname: "",
+                email: "",
+                company: "IBM",
+                personBeingVisited: this.state.email
+              }}
+              onSubmit={(values, { setSubmitting }) => {
+                console.log("submitted", values)
+                this.setState(({ usersToAdd }) => ({
+                  usersToAdd: usersToAdd.concat(values)
+                }))
+                setSubmitting(false)
+              }}
+            >
+              {({ handleChange, isSubmitting, errors }) => (
+                <Form>
+                  <Grid container spacing={16} justify="center">
+                    <Grid item>
+                      <Grid container spacing={16} justify="center">
+                        <Grid item>
+                          <Field
+                            type="text"
+                            name="firstname"
+                            placeholder="First Name"
+                            component={ControlledInput}
+                          />
+                        </Grid>
+                        <Grid item>
+                          <Field
+                            type="text"
+                            name="lastname"
+                            placeholder="Last Name"
+                            component={ControlledInput}
+                          />
+                        </Grid>
+                        <Grid item>
+                          <Field
+                            type="email"
+                            name="email"
+                            placeholder="Email"
+                            component={ControlledInput}
+                          />
+                        </Grid>
+                        <Grid item>
+                          <Field
+                            type="text"
+                            name="company"
+                            placeholder="Company"
+                            component={ControlledInput}
+                          />
+                        </Grid>
+                        <Grid item>
+                          <Field
+                            type="text"
+                            name="personBeingVisited"
+                            placeholder="Person being visited"
+                            component={ControlledInput}
+                            value={this.state.email}
+                          />
+                        </Grid>
                       </Grid>
                     </Grid>
+                    <Grid item>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        type="submit"
+                        disabled={isSubmitting}
+                      >
+                        Add user <SendIcon style={{ marginLeft: 12 }} />
+                      </Button>
+                    </Grid>
                   </Grid>
-                  <Grid item>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      type="submit"
-                      disabled={isSubmitting}
-                    >
-                      Add user <SendIcon style={{ marginLeft: 12 }} />
-                    </Button>
-                  </Grid>
-                </Grid>
-              </Form>
-            )}
-          </Formik>
-        </Grid>
-        <Divider />
-        <Grid item>
-          <Typography variant={"h2"} style={styles.title}>
-            3. Export!
-          </Typography>
-          <Grid container direction="column" spacing={16}>
-            <Grid item>
-              <Typography variant={"h4"}>Users to add</Typography>
+                </Form>
+              )}
+            </Formik>
+          </Grid>
+
+          <Divider />
+
+          <Grid item>
+            <Typography variant={"h3"} style={styles.title}>
+              2. Check
+            </Typography>
+            <Grid container direction="column" spacing={16}>
+              <Grid item>
+                <Typography variant={"h5"}>Users to add</Typography>
+              </Grid>
+              <Grid item>
+                <List
+                  style={{
+                    backgroundColor: "#eeeeee"
+                  }}
+                >
+                  {this.state.usersToAdd.map((user, i) => (
+                    <ListItem key={i}>
+                      <ListItemIcon>
+                        <ArrowRightIcon />
+                      </ListItemIcon>
+                      <ListItemText>
+                        {user.firstname} {user.lastname} ({user.email})
+                      </ListItemText>
+                    </ListItem>
+                  ))}
+                </List>
+              </Grid>
             </Grid>
-            <Grid item>
-              <ul>
-                {this.state.usersToAdd.map((user, i) => (
-                  <li key={i}>
-                    {user.firstname} {user.lastname} ({user.email})
-                  </li>
-                ))}
-              </ul>
-            </Grid>
+          </Grid>
+
+          <Divider />
+
+          <Grid item>
+            <Typography variant={"h3"} style={styles.title}>
+              3. Export
+            </Typography>
+
             <Grid item>
               <Button
                 type="submit"
@@ -197,12 +226,24 @@ class App extends React.Component {
                 color="primary"
                 onClick={this.handleParser}
               >
-                Create CSV
+                Create and save CSV
+              </Button>
+              <Button variant="contained" disabled>
+                Crete and save JSON (Not implemented)
               </Button>
             </Grid>
           </Grid>
+
+          <Divider />
+
+          <Grid item>
+            <Typography variant={"h3"} style={styles.title}>
+              4. Publish
+            </Typography>
+            <Typography>To be filled</Typography>
+          </Grid>
         </Grid>
-      </Grid>
+      </>
     )
   }
 }
