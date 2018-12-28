@@ -15,7 +15,9 @@ Thank you for considering it: [**`CONTRIBUTE.md`**](CONTRIBUTE.md)
 - [ ] Validate fields (**`IMPORTANT`**)
 - [ ] Remove user from list button
 - [ ] Export to JSON
-- [ ] Test
+- [ ] Create tests
+- [ ] Create CI
+- [ ] Create "Deploy to IBM Cloud" button
 
 ## FAQ
 
