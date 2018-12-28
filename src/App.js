@@ -22,13 +22,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      usersToAdd: [
-        {
-          firstname: "facundo",
-          lastname: "gordillo",
-          email: "famargor@ar.ibm.com"
-        }
-      ]
+      usersToAdd: []
     }
   }
 
