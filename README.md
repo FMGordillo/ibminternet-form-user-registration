@@ -12,7 +12,7 @@ Thank you for considering it: [**`CONTRIBUTE.md`**](CONTRIBUTE.md)
 
 ## Pendings
 
-Please review the [**`ISSUES`**](/issues) using the filter `enhancement`.
+Please review the **`/issues`** using the filter `enhancement`.
 
 ## FAQ
 
