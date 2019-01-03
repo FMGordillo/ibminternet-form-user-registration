@@ -12,12 +12,7 @@ Thank you for considering it: [**`CONTRIBUTE.md`**](CONTRIBUTE.md)
 
 ## Pendings
 
-- [ ] Validate fields (**`IMPORTANT`**)
-- [ ] Remove user from list button
-- [ ] Export to JSON
-- [ ] Create tests
-- [ ] Create CI
-- [ ] Create "Deploy to IBM Cloud" button
+Please review the [**`ISSUES`**](/issues) using the filter `enhancement`.
 
 ## FAQ
 
