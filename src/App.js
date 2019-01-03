@@ -2,21 +2,19 @@ import React from "react"
 import saveAs from "file-saver"
 import { Formik, Form, Field } from "formik"
 
-import AppBar from "@material-ui/core/AppBar"
 import Grid from "@material-ui/core/Grid"
 import Divider from "@material-ui/core/Divider"
-import Toolbar from "@material-ui/core/Toolbar"
 
 import Button from "@material-ui/core/Button"
 import Input from "@material-ui/core/Input"
 import List from "@material-ui/core/List"
-import ListItem from "@material-ui/core/ListItem"
-import ListItemIcon from "@material-ui/core/ListItemIcon"
-import ListItemText from "@material-ui/core/ListItemText"
 import Typography from "@material-ui/core/Typography"
 
 import SendIcon from "@material-ui/icons/Send"
-import ArrowRightIcon from "@material-ui/icons/ChevronRight"
+
+import AppBar from "./components/AppBar"
+import User from "./components/User"
+import Publish from "./components/sections/Publish"
 
 class App extends React.Component {
 	constructor(props) {
@@ -78,24 +76,7 @@ class App extends React.Component {
 
 		return (
 			<>
-				<AppBar position="sticky" color="primary">
-					<Toolbar>
-						<Typography variant="h6" color="inherit" style={{ flexGrow: 1 }}>
-							Register visitors
-						</Typography>
-						<a
-							target="_blank"
-							rel="noopener noreferrer"
-							href="https://github.com/FMGordillo/ibminternet-form-user-registration"
-						>
-							<img
-								src="/img/GitHub-Mark/GitHub-Mark-32px.png"
-								alt="Github"
-								style={{ width: "2em" }}
-							/>
-						</a>
-					</Toolbar>
-				</AppBar>
+				<AppBar appbar={{ position: "sticky", color: "primary" }} />
 
 				<Grid container direction="column" style={styles.container}>
 					<Grid item style={styles.item}>
@@ -191,7 +172,7 @@ class App extends React.Component {
 						</Typography>
 						<Grid container direction="column" spacing={16}>
 							<Grid item>
-								<Typography variant={"h5"}>Users to add</Typography>
+								<Typography variant={"h6"}>List of users to add:</Typography>
 							</Grid>
 							<Grid item>
 								<List
@@ -210,16 +191,7 @@ class App extends React.Component {
 											</span>
 										</Typography>
 									) : (
-										usersToAdd.map((user, i) => (
-											<ListItem key={i}>
-												<ListItemIcon>
-													<ArrowRightIcon />
-												</ListItemIcon>
-												<ListItemText>
-													{user.firstname} {user.lastname} ({user.email})
-												</ListItemText>
-											</ListItem>
-										))
+										usersToAdd.map((user, i) => <User key={i} user={user} />)
 									)}
 								</List>
 							</Grid>
@@ -259,56 +231,7 @@ class App extends React.Component {
 					<Divider />
 
 					<Grid item style={styles.item}>
-						<Typography variant={"h3"} style={styles.title}>
-							4. Publish
-						</Typography>
-						<Typography variant="body1">
-							First select the one which fits your location:
-						</Typography>
-						<List>
-							<ListItemLink
-								href="http://internetwifi-americas.ibm.com/"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<ListItemIcon>
-									<ArrowRightIcon />
-								</ListItemIcon>
-								<ListItemText>Americas</ListItemText>
-							</ListItemLink>
-							<ListItemLink
-								href="http://internetwifi-emea.ibm.com/"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<ListItemIcon>
-									<ArrowRightIcon />
-								</ListItemIcon>
-								<ListItemText>
-									Europe, Middle East, and Africa (EMEA)
-								</ListItemText>
-							</ListItemLink>
-							<ListItemLink
-								href="http://internetwifi-ap.ibm.com/"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<ListItemIcon>
-									<ArrowRightIcon />
-								</ListItemIcon>
-								<ListItemText>Asia Pacific (AP)</ListItemText>
-							</ListItemLink>
-						</List>
-						<Typography variant="body1">
-							After you login, accept the terms and conditions of the tool, you
-							should import the <code>.csv</code> file that you've just exported
-							from here
-						</Typography>
-						{/* <img
-							src="/img/import-csv.png"
-							alt="Import CSV example"
-							style={styles.img}
-						/> */}
+						<Publish styles={styles} />
 					</Grid>
 				</Grid>
 			</>
@@ -328,10 +251,6 @@ const ControlledInput = ({ field, form, placeholder, type }) => {
 			onChange={onChange}
 		/>
 	)
-}
-
-function ListItemLink(props) {
-	return <ListItem button component="a" {...props} />
 }
 
 export default App
