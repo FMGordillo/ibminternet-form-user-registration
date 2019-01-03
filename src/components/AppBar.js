@@ -1,14 +1,14 @@
 import React from "react"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
-import Typography from "@material-ui/core/Typography"
+import Text from "./Text"
 
 const AppBarComponent = props => (
 	<AppBar {...props.appbar}>
 		<Toolbar>
-			<Typography variant="h6" color="inherit" style={{ flexGrow: 1 }}>
+			<Text props={{ variant: "h6", color: "inherit", style: { flexGrow: 1 } }}>
 				Register visitors
-			</Typography>
+			</Text>
 			<a
 				target="_blank"
 				rel="noopener noreferrer"
