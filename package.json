@@ -1,35 +1,37 @@
 {
-  "name": "form-user-registration",
-  "version": "0.1.0",
-  "private": true,
-  "engines": {
-    "node": "9.x.x"
-  },
-  "dependencies": {
-    "@material-ui/core": "^3.7.1",
-    "@material-ui/icons": "^3.0.1",
-    "express": "^4.16.4",
-    "file-saver": "^2.0.0",
-    "formik": "^1.4.1",
-    "json2csv": "^4.3.2",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "react-scripts": "2.1.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "serve": "node index.js"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+	"name": "form-user-registration",
+	"version": "0.1.0",
+	"private": true,
+	"engines": {
+		"node": "9.x.x"
+	},
+	"dependencies": {
+		"@material-ui/core": "^3.7.1",
+		"@material-ui/icons": "^3.0.1",
+		"express": "^4.16.4",
+		"file-saver": "^2.0.0",
+		"formik": "^1.4.1",
+		"if-env": "^1.0.4",
+		"json2csv": "^4.3.2",
+		"react": "^16.7.0",
+		"react-dom": "^16.7.0",
+		"react-scripts": "2.1.2"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"postinstall": "if-env NODE_ENV=production && npm run build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"serve": "node index.js"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not ie <= 11",
+		"not op_mini all"
+	]
 }

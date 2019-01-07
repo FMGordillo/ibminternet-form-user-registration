@@ -1,25 +1,23 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import Typography from "@material-ui/core/Typography"
 import List from "@material-ui/core/List"
 import ListItem from "@material-ui/core/ListItem"
 import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
-
 import ArrowRightIcon from "@material-ui/icons/ChevronRight"
+
+import Text from "../Text"
 
 const ListItemLink = props => <ListItem button component="a" {...props} />
 
 const PublishComponent = ({ styles }) => {
 	return (
 		<>
-			<Typography variant={"h3"} style={styles.title}>
-				4. Publish
-			</Typography>
-			<Typography variant="body1">
+			<Text props={{ variant: "h3", style: styles.title }}>4. Publish</Text>
+			<Text props={{ variant: "body1" }}>
 				First select the one which fits your location:
-			</Typography>
+			</Text>
 			<List>
 				<ListItemLink
 					href="http://internetwifi-americas.ibm.com/"
@@ -52,10 +50,10 @@ const PublishComponent = ({ styles }) => {
 					<ListItemText>Asia Pacific (AP)</ListItemText>
 				</ListItemLink>
 			</List>
-			<Typography variant="body1">
+			<Text props={{ variant: "body1" }}>
 				After you login, accept the terms and conditions of the tool, you should
 				import the <code>.csv</code> file that you've just exported from here
-			</Typography>
+			</Text>
 			{/* <img
 							src="/img/import-csv.png"
 							alt="Import CSV example"

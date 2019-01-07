@@ -8,12 +8,12 @@ import Divider from "@material-ui/core/Divider"
 import Button from "@material-ui/core/Button"
 import Input from "@material-ui/core/Input"
 import List from "@material-ui/core/List"
-import Typography from "@material-ui/core/Typography"
 
 import SendIcon from "@material-ui/icons/Send"
 
 import AppBar from "./components/AppBar"
 import User from "./components/User"
+import Text from "./components/Text"
 import Publish from "./components/sections/Publish"
 
 class App extends React.Component {
@@ -45,7 +45,6 @@ class App extends React.Component {
 		]
 		const json2csvParser = new Json2csvParser({ fields })
 		const csv = json2csvParser.parse(this.state.usersToAdd)
-		console.log(csv)
 
 		const blob = new Blob([csv], { type: "text/csv" })
 		saveAs(blob, "test.csv")
@@ -80,9 +79,9 @@ class App extends React.Component {
 
 				<Grid container direction="column" style={styles.container}>
 					<Grid item style={styles.item}>
-						<Typography variant="h3" style={styles.title}>
+						<Text props={{ variant: "h3", style: styles.title }}>
 							1. Fill these
-						</Typography>
+						</Text>
 						<Formik
 							initialValues={{
 								firstname: "",
@@ -167,12 +166,10 @@ class App extends React.Component {
 					<Divider />
 
 					<Grid item style={styles.item}>
-						<Typography variant={"h3"} style={styles.title}>
-							2. Check
-						</Typography>
+						<Text props={{ variant: "h3", style: styles.title }}>2. Check</Text>
 						<Grid container direction="column" spacing={16}>
 							<Grid item>
-								<Typography variant={"h6"}>List of users to add:</Typography>
+								<Text props={{ variant: "h6" }}>List of users to add:</Text>
 							</Grid>
 							<Grid item>
 								<List
@@ -181,7 +178,7 @@ class App extends React.Component {
 									}}
 								>
 									{usersToAdd.length <= 0 ? (
-										<Typography variant="overline">
+										<Text props={{ variant: "overline" }}>
 											<span role="img" aria-label="lens">
 												🔍
 											</span>{" "}
@@ -189,7 +186,7 @@ class App extends React.Component {
 											<span role="img" aria-label="lens">
 												🔍
 											</span>
-										</Typography>
+										</Text>
 									) : (
 										usersToAdd.map((user, i) => <User key={i} user={user} />)
 									)}
@@ -201,14 +198,14 @@ class App extends React.Component {
 					<Divider />
 
 					<Grid item style={styles.item}>
-						<Typography variant={"h3"} style={styles.title}>
+						<Text props={{ variant: "h3", style: styles.title }}>
 							3. Export
-						</Typography>
+						</Text>
 
 						{usersToAdd <= 0 && (
-							<Typography variant="overline">
+							<Text props={{ variant: "overline" }}>
 								You need to add, at least, one user
-							</Typography>
+							</Text>
 						)}
 
 						<Grid item>
