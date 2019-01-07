@@ -45,7 +45,6 @@ class App extends React.Component {
 		]
 		const json2csvParser = new Json2csvParser({ fields })
 		const csv = json2csvParser.parse(this.state.usersToAdd)
-		console.log(csv)
 
 		const blob = new Blob([csv], { type: "text/csv" })
 		saveAs(blob, "test.csv")
