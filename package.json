@@ -1,35 +1,35 @@
 {
-	"name": "form-user-registration",
-	"version": "0.1.0",
-	"private": true,
-	"engines": {
-		"node": "14.x.x"
-	},
-	"dependencies": {
-		"@material-ui/core": "3.7.1",
-		"@material-ui/icons": "3.0.1",
-		"file-saver": "2.0.5",
-		"formik": "2.2.9",
-		"json2csv": "5.0.6",
-		"react": "16.8.0",
-		"react-dom": "16.8.0",
-		"react-scripts": "4.0.3"
-	},
-	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test"
-	},
-	"eslintConfig": {
-		"extends": "react-app"
-	},
-	"browserslist": [
-		">0.2%",
-		"not dead",
-		"not ie <= 11",
-		"not op_mini all"
-	],
-	"devDependencies": {
-		"typescript": "4.3.2"
-	}
+  "name": "form-user-registration",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": "16"
+  },
+  "dependencies": {
+    "@material-ui/core": "3.7.1",
+    "@material-ui/icons": "3.0.1",
+    "file-saver": "2.0.5",
+    "formik": "2.2.9",
+    "json2csv": "5.0.6",
+    "react": "16.8.0",
+    "react-dom": "16.8.0",
+    "react-scripts": "4.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "typescript": "4.3.2"
+  }
 }
